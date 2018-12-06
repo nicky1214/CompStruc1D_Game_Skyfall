@@ -1,0 +1,409 @@
+module cycle (
+    input clk,  // clock
+    input rst,  // reset
+    output pinnumber[25],
+    input ledmatrix[64]
+  ) {
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    
+    .rst(rst){
+    dff reg_1[8];
+    dff reg_2[8];
+    dff reg_3[8];
+    dff reg_4[8];
+    dff reg_5[8];
+    dff reg_6[8];
+    dff reg_7[8];
+    dff reg_0[8];
+    counter ctr(#SIZE(3), #DIV(16));
+    }
+  }
+  
+  
+
+  always {
+    pinnumber = 24b0;
+    
+    
+    case(ctr.value){// cycling throws
+      b000:
+        reg_0.d = ledmatrix[7:0];
+        reg_2.d = 0;
+        reg_3.d = 0;
+        reg_4.d = 0;
+        reg_5.d = 0;
+        reg_6.d = 0;
+        reg_7.d = 0;
+        reg_1.d = 0;
+        
+      b001:
+        reg_0.d = 0;
+        reg_1.d = ledmatrix[15:8];
+        reg_3.d = 0;
+        reg_4.d = 0;
+        reg_5.d = 0;
+        reg_6.d = 0;
+        reg_7.d = 0;
+        reg_2.d = 0;
+        
+      b010:
+        reg_1.d = 0;
+        reg_3.d = 0;
+        reg_2.d = ledmatrix[23:16];
+        reg_4.d = 0;
+        reg_5.d = 0;
+        reg_6.d = 0;
+        reg_7.d = 0;
+        reg_0.d = 0;
+               
+      b011:
+        reg_1.d = 0;
+        reg_2.d = 0;
+        reg_4.d = 0;
+        reg_3.d = ledmatrix[31:24];
+        reg_5.d = 0;
+        reg_6.d = 0;
+        reg_7.d = 0;
+        reg_0.d = 0;
+        
+      b100:
+        reg_1.d = 0;
+        reg_2.d = 0;
+        reg_3.d = 0;
+        reg_5.d = 0;
+        reg_4.d = ledmatrix[39:32];
+        reg_6.d = 0;
+        reg_7.d = 0;
+        reg_0.d = 0;
+       
+      b101:
+        reg_1.d = 0;
+        reg_2.d = 0;
+        reg_3.d = 0;
+        reg_4.d = 0;
+        reg_6.d = 0;
+        reg_5.d = ledmatrix[47:40];
+        reg_7.d = 0;
+        reg_0.d = 0;
+        
+      b110:
+        reg_1.d = 0;
+        reg_2.d = 0;
+        reg_3.d = 0;
+        reg_4.d = 0;
+        reg_5.d = 0;
+        reg_7.d = 0;
+        reg_6.d = ledmatrix[55:48];
+        reg_0.d = 0;
+        
+      b111:
+        reg_1.d = 0;
+        reg_2.d = 0;
+        reg_3.d = 0;
+        reg_4.d = 0;
+        reg_5.d = 0;
+        reg_6.d = 0;
+        reg_0.d = 0;
+        reg_7.d = ledmatrix[63:56];
+      }
+     pinnumber = 25b1101101101101101101101100;//initialise pinnumber to be opposite of the following:
+     // pins requiring 1 as select signal: 1, 4, 7, 10, 13, 16, 19, 22 (rows) (multiplexed)
+     // pins requiring 0 as select signal: 3, 6, 9, 12, 15, 18, 21, 24 (red column)
+     //                                    2, 5, 8, 11, 14, 17, 20, 23 (green column)
+    
+    //columns: 7  6  5  4  3  2  1  0
+    //   rows:
+    //       7
+    //       6
+    //       5
+    //       4
+    //       3
+    //       2
+    //       1
+    //       0
+    
+    // mapping to pin number 
+                    //top row   
+    if(reg_7.q[7]){ // left-most row
+    	pinnumber[1]=1;//row
+    	pinnumber[3]=0;//column
+    }
+    if(reg_7.q[6]){
+    	pinnumber[1]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_7.q[5]){
+    	pinnumber[1]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_7.q[4]){
+    	pinnumber[1]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_7.q[3]){
+    	pinnumber[1]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_7.q[2]){
+    	pinnumber[1]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_7.q[1]){
+    	pinnumber[1]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_7.q[0]){
+    	pinnumber[1]=1;
+    	pinnumber[24]=0;
+    }
+    
+    //////////////
+    
+    if(reg_6.q[7]){
+    	pinnumber[4]=1;
+    	pinnumber[3]=0;
+    }
+    if(reg_6.q[6]){
+    	pinnumber[4]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_6.q[5]){
+    	pinnumber[4]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_6.q[4]){
+    	pinnumber[4]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_6.q[3]){
+    	pinnumber[4]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_6.q[2]){
+    	pinnumber[4]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_6.q[1]){
+    	pinnumber[4]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_6.q[0]){
+    	pinnumber[4]=1;
+    	pinnumber[24]=0;
+    }
+    
+    ////////////////
+    
+    if(reg_5.q[7]){
+    	pinnumber[7]=1;
+    	pinnumber[3]=0;
+    }
+    if(reg_5.q[6]){
+    	pinnumber[7]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_5.q[5]){
+    	pinnumber[7]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_5.q[4]){
+    	pinnumber[7]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_5.q[3]){
+    	pinnumber[7]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_5.q[2]){
+    	pinnumber[7]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_5.q[1]){
+    	pinnumber[7]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_5.q[0]){
+    	pinnumber[7]=1;
+    	pinnumber[24]=0;
+    }
+    
+    /////////////////
+    
+    if(reg_4.q[7]){
+    	pinnumber[10]=1;
+    	pinnumber[3]=0;
+    }
+    if(reg_4.q[6]){
+    	pinnumber[10]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_4.q[5]){
+    	pinnumber[10]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_4.q[4]){
+    	pinnumber[10]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_4.q[3]){
+    	pinnumber[10]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_4.q[2]){
+    	pinnumber[10]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_4.q[1]){
+    	pinnumber[10]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_4.q[0]){
+    	pinnumber[10]=1;
+    	pinnumber[24]=0;
+    }
+    
+    /////////////
+    
+    if(reg_3.q[7]){
+    	pinnumber[13]=1;
+    	pinnumber[3]=0;
+    }
+    if(reg_3.q[6]){
+    	pinnumber[13]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_3.q[5]){
+    	pinnumber[13]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_3.q[4]){
+    	pinnumber[13]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_3.q[3]){
+    	pinnumber[13]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_3.q[2]){
+    	pinnumber[13]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_3.q[1]){
+    	pinnumber[13]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_3.q[0]){
+    	pinnumber[13]=1;
+    	pinnumber[24]=0;
+    }
+    
+    //////////////
+    
+    if(reg_2.q[7]){
+    	pinnumber[16]=1;
+    	pinnumber[3]=0;
+    }
+    if(reg_2.q[6]){
+    	pinnumber[16]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_2.q[5]){
+    	pinnumber[16]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_2.q[4]){
+    	pinnumber[16]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_2.q[3]){
+    	pinnumber[16]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_2.q[2]){
+    	pinnumber[16]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_2.q[1]){
+    	pinnumber[16]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_2.q[0]){
+    	pinnumber[16]=1;
+    	pinnumber[24]=0;
+    }
+    
+    ////////////
+    
+    if(reg_1.q[7]){
+    	pinnumber[19]=1;
+    	pinnumber[3]=0;
+    }
+    if(reg_1.q[6]){
+    	pinnumber[19]=1;
+    	pinnumber[6]=0;
+    }
+    if(reg_1.q[5]){
+    	pinnumber[19]=1;
+    	pinnumber[9]=0;
+    }
+    if(reg_1.q[4]){
+    	pinnumber[19]=1;
+    	pinnumber[12]=0;
+    }
+    if(reg_1.q[3]){
+    	pinnumber[19]=1;
+    	pinnumber[15]=0;
+    }
+    if(reg_1.q[2]){
+    	pinnumber[19]=1;
+    	pinnumber[18]=0;
+    }
+    if(reg_1.q[1]){
+    	pinnumber[19]=1;
+    	pinnumber[21]=0;
+    }
+    if(reg_1.q[0]){
+    	pinnumber[19]=1;
+    	pinnumber[24]=0;
+    }
+    
+    //////////////
+    
+    if(reg_0.q[7]){
+    	pinnumber[22]=1;
+    	pinnumber[2]=0;
+    }
+    if(reg_0.q[6]){
+    	pinnumber[22]=1;
+    	pinnumber[5]=0;
+    }
+    if(reg_0.q[5]){
+    	pinnumber[22]=1;
+    	pinnumber[8]=0;
+    }
+    if(reg_0.q[4]){
+    	pinnumber[22]=1;
+    	pinnumber[11]=0;
+    }
+    if(reg_0.q[3]){
+    	pinnumber[22]=1;
+    	pinnumber[14]=0;
+    }
+    if(reg_0.q[2]){
+    	pinnumber[22]=1;
+    	pinnumber[17]=0;
+    }
+    if(reg_0.q[1]){
+    	pinnumber[22]=1;
+    	pinnumber[20]=0;
+    }
+    if(reg_0.q[0]){
+    	pinnumber[22]=1;
+    	pinnumber[23]=0;
+    }
+
+  }
+}

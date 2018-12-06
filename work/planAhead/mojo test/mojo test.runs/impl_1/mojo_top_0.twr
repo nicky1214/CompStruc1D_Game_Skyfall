@@ -1,0 +1,2003 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -o
+mojo_top_0.twr -v 30 -l 30 mojo_top_0_routed.ncd mojo_top_0.pcf
+
+Design file:              mojo_top_0_routed.ncd
+Physical constraint file: mojo_top_0.pcf
+Device,package,speed:     xc6slx9,tqg144,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report, limited to 30 items per constraint
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 2024370 paths analyzed, 1559 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  15.084ns.
+--------------------------------------------------------------------------------
+Slack:                  4.916ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.967ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.967ns (3.099ns logic, 11.868ns route)
+                                                       (20.7% logic, 79.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  4.934ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.949ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.949ns (3.081ns logic, 11.868ns route)
+                                                       (20.6% logic, 79.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  4.959ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.924ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.924ns (3.056ns logic, 11.868ns route)
+                                                       (20.5% logic, 79.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  4.971ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.912ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.COUT    Topcya                0.495   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.912ns (3.460ns logic, 11.452ns route)
+                                                       (23.2% logic, 76.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  4.989ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.894ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.COUT    Topcya                0.495   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.894ns (3.442ns logic, 11.452ns route)
+                                                       (23.1% logic, 76.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.014ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.869ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.COUT    Topcya                0.495   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.869ns (3.417ns logic, 11.452ns route)
+                                                       (23.0% logic, 77.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.070ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/M_gamestate_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.828ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.067ns (0.653 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/M_gamestate_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X14Y50.B5      net (fanout=4)        1.414   out4
+    SLICE_X14Y50.B       Tilo                  0.235   skyfall/alu/shift/Mmux_shift116
+                                                       skyfall/out31_2
+    SLICE_X12Y52.C6      net (fanout=4)        0.692   skyfall/out311
+    SLICE_X12Y52.C       Tilo                  0.255   skyfall/alu/shift/N135
+                                                       skyfall/alu/shift/Sh10411
+    SLICE_X12Y52.D4      net (fanout=2)        1.522   skyfall/Sh1041
+    SLICE_X12Y52.D       Tilo                  0.254   skyfall/alu/shift/N135
+                                                       skyfall/alu/shift/Mmux_shift118_SW0_SW0
+    SLICE_X16Y47.A2      net (fanout=1)        1.214   skyfall/alu/shift/N135
+    SLICE_X16Y47.A       Tilo                  0.254   skyfall/alu/shift/Mmux_shift112
+                                                       skyfall/alu/shift/Mmux_shift118
+    SLICE_X14Y46.D6      net (fanout=7)        0.685   skyfall/M_shift_shift[4]
+    SLICE_X14Y46.D       Tilo                  0.235   skyfall/M_period_q_2
+                                                       skyfall/out8
+    SLICE_X7Y44.B3       net (fanout=11)       1.501   skyfall/out11
+    SLICE_X7Y44.B        Tilo                  0.259   skyfall/M_template_q[6]
+                                                       skyfall/out9_3
+    SLICE_X16Y54.B1      net (fanout=14)       1.967   skyfall/out93
+    SLICE_X16Y54.B       Tilo                  0.254   skyfall/M_gamestate_q_FSM_FFd2
+                                                       skyfall/M_gamestate_q_FSM_FFd2-In1
+    SLICE_X17Y54.AX      net (fanout=1)        1.044   skyfall/M_gamestate_q_FSM_FFd2-In
+    SLICE_X17Y54.CLK     Tdick                 0.114   skyfall/M_gamestate_q_FSM_FFd2_1
+                                                       skyfall/M_gamestate_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     14.828ns (2.854ns logic, 11.974ns route)
+                                                       (19.2% logic, 80.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.091ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.792ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X11Y48.A1      net (fanout=17)       1.809   skyfall/out3
+    SLICE_X11Y48.A       Tilo                  0.259   skyfall/M_alu_a[4]
+                                                       skyfall/M_alu_a<4>1
+    SLICE_X10Y48.AX      net (fanout=1)        0.275   skyfall/M_alu_a[4]
+    SLICE_X10Y48.BMUX    Taxb                  0.310   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.792ns (2.998ns logic, 11.794ns route)
+                                                       (20.3% logic, 79.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.109ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.774ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X11Y48.A1      net (fanout=17)       1.809   skyfall/out3
+    SLICE_X11Y48.A       Tilo                  0.259   skyfall/M_alu_a[4]
+                                                       skyfall/M_alu_a<4>1
+    SLICE_X10Y48.AX      net (fanout=1)        0.275   skyfall/M_alu_a[4]
+    SLICE_X10Y48.BMUX    Taxb                  0.310   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.774ns (2.980ns logic, 11.794ns route)
+                                                       (20.2% logic, 79.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.134ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.749ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X11Y48.A1      net (fanout=17)       1.809   skyfall/out3
+    SLICE_X11Y48.A       Tilo                  0.259   skyfall/M_alu_a[4]
+                                                       skyfall/M_alu_a<4>1
+    SLICE_X10Y48.AX      net (fanout=1)        0.275   skyfall/M_alu_a[4]
+    SLICE_X10Y48.BMUX    Taxb                  0.310   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.749ns (2.955ns logic, 11.794ns route)
+                                                       (20.0% logic, 80.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.145ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.740ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.740ns (3.099ns logic, 11.641ns route)
+                                                       (21.0% logic, 79.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.163ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.722ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.722ns (3.081ns logic, 11.641ns route)
+                                                       (20.9% logic, 79.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.188ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.697ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.697ns (3.056ns logic, 11.641ns route)
+                                                       (20.8% logic, 79.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.200ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.685ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.COUT    Topcya                0.495   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.685ns (3.460ns logic, 11.225ns route)
+                                                       (23.6% logic, 76.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.218ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.667ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.COUT    Topcya                0.495   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.667ns (3.442ns logic, 11.225ns route)
+                                                       (23.5% logic, 76.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.243ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.642ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.COUT    Topcya                0.495   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.642ns (3.417ns logic, 11.225ns route)
+                                                       (23.3% logic, 76.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.250ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.633ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.DMUX    Tcxd                  0.281   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X8Y43.D2       net (fanout=3)        1.272   skyfall/a[15]_GND_7_o_add_4_OUT[3]
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.633ns (2.969ns logic, 11.664ns route)
+                                                       (20.3% logic, 79.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.268ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.615ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.DMUX    Tcxd                  0.281   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X8Y43.D2       net (fanout=3)        1.272   skyfall/a[15]_GND_7_o_add_4_OUT[3]
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.615ns (2.951ns logic, 11.664ns route)
+                                                       (20.2% logic, 79.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.269ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               skyfall/lastrow/M_regs_q_0 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.682ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.014ns (0.333 - 0.347)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: skyfall/lastrow/M_regs_q_0 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X3Y41.AQ       Tcko                  0.430   M_skyfall_ledmatrix[11]
+                                                       skyfall/lastrow/M_regs_q_0
+    SLICE_X13Y53.A6      net (fanout=23)       2.989   M_skyfall_ledmatrix[8]
+    SLICE_X13Y53.A       Tilo                  0.259   skyfall/N344
+                                                       skyfall/out31_SW11
+    SLICE_X12Y53.B3      net (fanout=1)        0.874   skyfall/N345
+    SLICE_X12Y53.B       Tilo                  0.254   skyfall/M_alu_a<0>_mand11
+                                                       skyfall/Mmux_M_alu_b11
+    SLICE_X12Y53.C4      net (fanout=29)       0.368   skyfall/M_alu_b[0]
+    SLICE_X12Y53.C       Tilo                  0.255   skyfall/M_alu_a<0>_mand11
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut<0>
+    SLICE_X10Y47.A3      net (fanout=1)        1.268   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut[0]
+    SLICE_X10Y47.COUT    Topcya                0.472   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.682ns (3.123ns logic, 11.559ns route)
+                                                       (21.3% logic, 78.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.278ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.605ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.DMUX    Topad                 0.669   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X8Y43.D2       net (fanout=3)        1.272   skyfall/a[15]_GND_7_o_add_4_OUT[3]
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.605ns (3.357ns logic, 11.248ns route)
+                                                       (23.0% logic, 77.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.287ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               skyfall/lastrow/M_regs_q_0 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.664ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.014ns (0.333 - 0.347)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: skyfall/lastrow/M_regs_q_0 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X3Y41.AQ       Tcko                  0.430   M_skyfall_ledmatrix[11]
+                                                       skyfall/lastrow/M_regs_q_0
+    SLICE_X13Y53.A6      net (fanout=23)       2.989   M_skyfall_ledmatrix[8]
+    SLICE_X13Y53.A       Tilo                  0.259   skyfall/N344
+                                                       skyfall/out31_SW11
+    SLICE_X12Y53.B3      net (fanout=1)        0.874   skyfall/N345
+    SLICE_X12Y53.B       Tilo                  0.254   skyfall/M_alu_a<0>_mand11
+                                                       skyfall/Mmux_M_alu_b11
+    SLICE_X12Y53.C4      net (fanout=29)       0.368   skyfall/M_alu_b[0]
+    SLICE_X12Y53.C       Tilo                  0.255   skyfall/M_alu_a<0>_mand11
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut<0>
+    SLICE_X10Y47.A3      net (fanout=1)        1.268   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut[0]
+    SLICE_X10Y47.COUT    Topcya                0.472   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.664ns (3.105ns logic, 11.559ns route)
+                                                       (21.2% logic, 78.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.293ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.590ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.DMUX    Tcxd                  0.281   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X8Y43.D2       net (fanout=3)        1.272   skyfall/a[15]_GND_7_o_add_4_OUT[3]
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.590ns (2.926ns logic, 11.664ns route)
+                                                       (20.1% logic, 79.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.296ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns2/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.587ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns2/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.DMUX    Topad                 0.669   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X8Y43.D2       net (fanout=3)        1.272   skyfall/a[15]_GND_7_o_add_4_OUT[3]
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.390   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns2/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.587ns (3.339ns logic, 11.248ns route)
+                                                       (22.9% logic, 77.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.299ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/M_gamestate_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.601ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.065ns (0.653 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/M_gamestate_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X14Y50.B5      net (fanout=4)        1.414   out4
+    SLICE_X14Y50.B       Tilo                  0.235   skyfall/alu/shift/Mmux_shift116
+                                                       skyfall/out31_2
+    SLICE_X12Y52.C6      net (fanout=4)        0.692   skyfall/out311
+    SLICE_X12Y52.C       Tilo                  0.255   skyfall/alu/shift/N135
+                                                       skyfall/alu/shift/Sh10411
+    SLICE_X12Y52.D4      net (fanout=2)        1.522   skyfall/Sh1041
+    SLICE_X12Y52.D       Tilo                  0.254   skyfall/alu/shift/N135
+                                                       skyfall/alu/shift/Mmux_shift118_SW0_SW0
+    SLICE_X16Y47.A2      net (fanout=1)        1.214   skyfall/alu/shift/N135
+    SLICE_X16Y47.A       Tilo                  0.254   skyfall/alu/shift/Mmux_shift112
+                                                       skyfall/alu/shift/Mmux_shift118
+    SLICE_X14Y46.D6      net (fanout=7)        0.685   skyfall/M_shift_shift[4]
+    SLICE_X14Y46.D       Tilo                  0.235   skyfall/M_period_q_2
+                                                       skyfall/out8
+    SLICE_X7Y44.B3       net (fanout=11)       1.501   skyfall/out11
+    SLICE_X7Y44.B        Tilo                  0.259   skyfall/M_template_q[6]
+                                                       skyfall/out9_3
+    SLICE_X16Y54.B1      net (fanout=14)       1.967   skyfall/out93
+    SLICE_X16Y54.B       Tilo                  0.254   skyfall/M_gamestate_q_FSM_FFd2
+                                                       skyfall/M_gamestate_q_FSM_FFd2-In1
+    SLICE_X17Y54.AX      net (fanout=1)        1.044   skyfall/M_gamestate_q_FSM_FFd2-In
+    SLICE_X17Y54.CLK     Tdick                 0.114   skyfall/M_gamestate_q_FSM_FFd2_1
+                                                       skyfall/M_gamestate_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     14.601ns (2.854ns logic, 11.747ns route)
+                                                       (19.5% logic, 80.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.312ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               skyfall/lastrow/M_regs_q_0 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.639ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.014ns (0.333 - 0.347)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: skyfall/lastrow/M_regs_q_0 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X3Y41.AQ       Tcko                  0.430   M_skyfall_ledmatrix[11]
+                                                       skyfall/lastrow/M_regs_q_0
+    SLICE_X13Y53.A6      net (fanout=23)       2.989   M_skyfall_ledmatrix[8]
+    SLICE_X13Y53.A       Tilo                  0.259   skyfall/N344
+                                                       skyfall/out31_SW11
+    SLICE_X12Y53.B3      net (fanout=1)        0.874   skyfall/N345
+    SLICE_X12Y53.B       Tilo                  0.254   skyfall/M_alu_a<0>_mand11
+                                                       skyfall/Mmux_M_alu_b11
+    SLICE_X12Y53.C4      net (fanout=29)       0.368   skyfall/M_alu_b[0]
+    SLICE_X12Y53.C       Tilo                  0.255   skyfall/M_alu_a<0>_mand11
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut<0>
+    SLICE_X10Y47.A3      net (fanout=1)        1.268   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut[0]
+    SLICE_X10Y47.COUT    Topcya                0.472   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_lut[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.639ns (3.080ns logic, 11.559ns route)
+                                                       (21.0% logic, 79.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.319ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               skyfall/lastrow/M_regs_q_1 (FF)
+  Destination:          skyfall/M_gamestate_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.640ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.006ns (0.653 - 0.659)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: skyfall/lastrow/M_regs_q_1 to skyfall/M_gamestate_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X3Y41.BQ       Tcko                  0.430   M_skyfall_ledmatrix[11]
+                                                       skyfall/lastrow/M_regs_q_1
+    SLICE_X15Y55.B6      net (fanout=34)       2.530   M_skyfall_ledmatrix[9]
+    SLICE_X15Y55.B       Tilo                  0.259   skyfall/N347
+                                                       skyfall/Mmux_M_alu_b21
+    SLICE_X15Y55.A3      net (fanout=19)       0.596   skyfall/M_alu_b[1]
+    SLICE_X15Y55.A       Tilo                  0.259   skyfall/N347
+                                                       skyfall/alu/shift/Sh991_SW1
+    SLICE_X15Y49.A2      net (fanout=1)        1.416   skyfall/alu/shift/N222
+    SLICE_X15Y49.A       Tilo                  0.259   skyfall/M_alu_a[1]
+                                                       skyfall/alu/shift/Sh991
+    SLICE_X14Y46.B4      net (fanout=3)        0.718   skyfall/alu/shift/Sh99
+    SLICE_X14Y46.B       Tilo                  0.235   skyfall/M_period_q_2
+                                                       skyfall/alu/shift/Mmux_shift107_SW0
+    SLICE_X14Y46.A2      net (fanout=1)        0.951   skyfall/alu/shift/N91
+    SLICE_X14Y46.A       Tilo                  0.235   skyfall/M_period_q_2
+                                                       skyfall/alu/shift/Mmux_shift108_SW0
+    SLICE_X14Y46.C2      net (fanout=1)        0.875   skyfall/alu/shift/N317
+    SLICE_X14Y46.C       Tilo                  0.235   skyfall/M_period_q_2
+                                                       skyfall/alu/shift/Mmux_shift108
+    SLICE_X14Y46.D5      net (fanout=7)        0.268   skyfall/M_shift_shift[3]
+    SLICE_X14Y46.D       Tilo                  0.235   skyfall/M_period_q_2
+                                                       skyfall/out8
+    SLICE_X7Y44.B3       net (fanout=11)       1.501   skyfall/out11
+    SLICE_X7Y44.B        Tilo                  0.259   skyfall/M_template_q[6]
+                                                       skyfall/out9_3
+    SLICE_X16Y54.B1      net (fanout=14)       1.967   skyfall/out93
+    SLICE_X16Y54.B       Tilo                  0.254   skyfall/M_gamestate_q_FSM_FFd2
+                                                       skyfall/M_gamestate_q_FSM_FFd2-In1
+    SLICE_X17Y54.AX      net (fanout=1)        1.044   skyfall/M_gamestate_q_FSM_FFd2-In
+    SLICE_X17Y54.CLK     Tdick                 0.114   skyfall/M_gamestate_q_FSM_FFd2_1
+                                                       skyfall/M_gamestate_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     14.640ns (2.774ns logic, 11.866ns route)
+                                                       (18.9% logic, 81.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.320ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_11 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.565ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_11 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_11
+    SLICE_X7Y58.B1       net (fanout=2)        0.746   button/leftbutton_cond/M_ctr_q[11]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X11Y48.A1      net (fanout=17)       1.809   skyfall/out3
+    SLICE_X11Y48.A       Tilo                  0.259   skyfall/M_alu_a[4]
+                                                       skyfall/M_alu_a<4>1
+    SLICE_X10Y48.AX      net (fanout=1)        0.275   skyfall/M_alu_a[4]
+    SLICE_X10Y48.BMUX    Taxb                  0.310   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.565ns (2.998ns logic, 11.567ns route)
+                                                       (20.6% logic, 79.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.321ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_13 (FF)
+  Destination:          skyfall/middlecolumns1/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.562ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_13 to skyfall/middlecolumns1/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.BQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_13
+    SLICE_X7Y58.B2       net (fanout=2)        0.973   button/leftbutton_cond/M_ctr_q[13]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X19Y54.C4      net (fanout=17)       0.335   skyfall/out3
+    SLICE_X19Y54.C       Tilo                  0.259   button/out_0
+                                                       skyfall/M_alu_a<0>1
+    SLICE_X10Y47.A4      net (fanout=2)        1.404   skyfall/M_alu_a[0]
+    SLICE_X10Y47.DMUX    Topad                 0.669   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/M_alu_a[0]_rt
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X8Y43.D2       net (fanout=3)        1.272   skyfall/a[15]_GND_7_o_add_4_OUT[3]
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.365   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns1/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.562ns (3.314ns logic, 11.248ns route)
+                                                       (22.8% logic, 77.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.323ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_15 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.560ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.082ns (0.638 - 0.720)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_15 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y60.DQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[15]
+                                                       button/leftbutton_cond/M_ctr_q_15
+    SLICE_X7Y58.D2       net (fanout=2)        1.161   button/leftbutton_cond/M_ctr_q[15]
+    SLICE_X7Y58.D        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out2
+    SLICE_X7Y58.A3       net (fanout=4)        0.367   button/out1_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.560ns (3.099ns logic, 11.461ns route)
+                                                       (21.3% logic, 78.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  5.327ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               button/leftbutton_cond/M_ctr_q_10 (FF)
+  Destination:          skyfall/middlecolumns3/M_regs_q_4 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      14.558ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.080ns (0.638 - 0.718)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: button/leftbutton_cond/M_ctr_q_10 to skyfall/middlecolumns3/M_regs_q_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X6Y59.CQ       Tcko                  0.476   button/leftbutton_cond/M_ctr_q[11]
+                                                       button/leftbutton_cond/M_ctr_q_10
+    SLICE_X7Y58.B3       net (fanout=2)        0.564   button/leftbutton_cond/M_ctr_q[10]
+    SLICE_X7Y58.B        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out3
+    SLICE_X7Y58.A4       net (fanout=4)        0.962   button/out2_1
+    SLICE_X7Y58.A        Tilo                  0.259   button/out1_1
+                                                       button/leftbutton_cond/out4_1
+    SLICE_X19Y54.B1      net (fanout=4)        1.718   out4
+    SLICE_X19Y54.B       Tilo                  0.259   button/out_0
+                                                       skyfall/out31
+    SLICE_X15Y46.C5      net (fanout=17)       1.211   skyfall/out3
+    SLICE_X15Y46.C       Tilo                  0.259   skyfall/alu/shift/N275
+                                                       skyfall/M_alu_a<2>1
+    SLICE_X10Y47.CX      net (fanout=2)        0.944   skyfall/M_alu_a[2]
+    SLICE_X10Y47.COUT    Tcxcy                 0.134   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy<3>
+    SLICE_X10Y48.CIN     net (fanout=1)        0.003   skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_cy[3]
+    SLICE_X10Y48.BMUX    Tcinb                 0.277   skyfall/a[15]_GND_7_o_add_4_OUT[7]
+                                                       skyfall/alu/add/Madd_a[15]_GND_7_o_add_4_OUT_Madd_xor<7>
+    SLICE_X8Y43.D1       net (fanout=3)        1.473   skyfall/a[15]_GND_7_o_add_4_OUT<5>_0
+    SLICE_X8Y43.D        Tilo                  0.254   skyfall/M_template_q[7]
+                                                       skyfall/out3_SW2
+    SLICE_X12Y47.C2      net (fanout=2)        1.126   skyfall/N340
+    SLICE_X12Y47.C       Tilo                  0.255   skyfall/M_firstrow_en
+                                                       skyfall/out9_SW5
+    SLICE_X3Y42.D2       net (fanout=5)        2.114   skyfall/N191
+    SLICE_X3Y42.D        Tilo                  0.259   M_skyfall_ledmatrix[19]
+                                                       skyfall/Mmux_M_firstrow_en11_1
+    SLICE_X5Y45.CE       net (fanout=5)        1.344   skyfall/Mmux_M_firstrow_en11
+    SLICE_X5Y45.CLK      Tceck                 0.408   M_skyfall_ledmatrix[51]
+                                                       skyfall/middlecolumns3/M_regs_q_4
+    -------------------------------------------------  ---------------------------
+    Total                                     14.558ns (3.099ns logic, 11.459ns route)
+                                                       (21.3% logic, 78.7% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 17.334ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 2.666ns (375.094MHz) (Tbcper_I)
+  Physical resource: clk_BUFGP/BUFG/I0
+  Logical resource: clk_BUFGP/BUFG/I0
+  Location pin: BUFGMUX_X2Y11.I0
+  Clock network: clk_BUFGP/IBUFG
+--------------------------------------------------------------------------------
+Slack: 18.601ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: button/leftbutton_cond/M_sync_out/CLK
+  Logical resource: button/resetbutton_cond/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X4Y58.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.601ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: button/leftbutton_cond/M_sync_out/CLK
+  Logical resource: button/rightbutton_cond/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X4Y58.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.601ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 1.399ns (714.796MHz) (Tcp)
+  Physical resource: button/leftbutton_cond/M_sync_out/CLK
+  Logical resource: button/leftbutton_cond/sync/Mshreg_M_pipe_q_1/CLK
+  Location pin: SLICE_X4Y58.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_0/CK
+  Location pin: SLICE_X20Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_1/CK
+  Location pin: SLICE_X20Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_2/CK
+  Location pin: SLICE_X20Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_3/CK
+  Location pin: SLICE_X20Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[7]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_4/CK
+  Location pin: SLICE_X20Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[7]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_5/CK
+  Location pin: SLICE_X20Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[7]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_6/CK
+  Location pin: SLICE_X20Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[7]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_7/CK
+  Location pin: SLICE_X20Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[11]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_8/CK
+  Location pin: SLICE_X20Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[11]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_9/CK
+  Location pin: SLICE_X20Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[11]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_10/CK
+  Location pin: SLICE_X20Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[11]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_11/CK
+  Location pin: SLICE_X20Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[15]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_12/CK
+  Location pin: SLICE_X20Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[15]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_13/CK
+  Location pin: SLICE_X20Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[15]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_14/CK
+  Location pin: SLICE_X20Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[15]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_15/CK
+  Location pin: SLICE_X20Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[19]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_16/CK
+  Location pin: SLICE_X20Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[19]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_17/CK
+  Location pin: SLICE_X20Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[19]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_18/CK
+  Location pin: SLICE_X20Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/rightbutton_cond/M_ctr_q[19]/CLK
+  Logical resource: button/rightbutton_cond/M_ctr_q_19/CK
+  Location pin: SLICE_X20Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/resetbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/resetbutton_cond/M_ctr_q_0/CK
+  Location pin: SLICE_X16Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/resetbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/resetbutton_cond/M_ctr_q_1/CK
+  Location pin: SLICE_X16Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/resetbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/resetbutton_cond/M_ctr_q_2/CK
+  Location pin: SLICE_X16Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/resetbutton_cond/M_ctr_q[3]/CLK
+  Logical resource: button/resetbutton_cond/M_ctr_q_3/CK
+  Location pin: SLICE_X16Y57.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/resetbutton_cond/M_ctr_q[7]/CLK
+  Logical resource: button/resetbutton_cond/M_ctr_q_4/CK
+  Location pin: SLICE_X16Y58.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: button/resetbutton_cond/M_ctr_q[7]/CLK
+  Logical resource: button/resetbutton_cond/M_ctr_q_5/CK
+  Location pin: SLICE_X16Y58.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   15.084|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 2024370 paths, 0 nets, and 2666 connections
+
+Design statistics:
+   Minimum period:  15.084ns{1}   (Maximum frequency:  66.295MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Thu Dec 06 23:59:56 2018 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 161 MB
+
+
+

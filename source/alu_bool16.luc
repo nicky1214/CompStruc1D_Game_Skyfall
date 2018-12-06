@@ -1,0 +1,37 @@
+module alu_bool16 (
+        input a[16],
+        input b[16],
+        input alufn[6],
+        output bool[16]
+    ) {
+    always {
+        case (alufn[3:0]) {
+            b1000:
+                bool = a & b;
+                
+            b1110:
+                bool = a | b;
+                
+            b0110:
+                bool = a ^ b;
+                
+            b1010:
+                bool = a;
+            
+            b1100:
+                bool = b;
+
+            b0001:
+                bool = ~a & ~b;
+
+            b0111:
+                bool = ~a | ~b;
+            
+            b1111:
+                bool = ^a;
+        
+            default:
+                bool = b0;
+            }
+        }
+}

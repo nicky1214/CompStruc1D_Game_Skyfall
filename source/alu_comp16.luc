@@ -1,0 +1,18 @@
+module alu_comp16 (
+    input z,  
+    input v, 
+    input n, 
+    input alufn[6],   
+    output compare[16] 
+  ) { 
+ 
+  always { 
+    compare = 0;    
+     
+    case(alufn[2:1]){ 
+    2b01: compare[0] = z;     // case 1 when a = b
+    2b10: compare[0] = n^v;   // case 2 when a < b
+    2b11: compare[0] = z | n^v;  // case 3 when a <= b
+  } 
+}
+}

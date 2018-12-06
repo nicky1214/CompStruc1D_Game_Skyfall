@@ -1,0 +1,58 @@
+NET "pinnumber<19>" LOC = P6 | IOSTANDARD = LVTTL;
+NET "pinnumber<18>" LOC = P8 | IOSTANDARD = LVTTL;
+NET "pinnumber<17>" LOC = P10 | IOSTANDARD = LVTTL;
+NET "pinnumber<16>" LOC = P12 | IOSTANDARD = LVTTL;
+NET "pinnumber<15>" LOC = P15 | IOSTANDARD = LVTTL;
+NET "pinnumber<14>" LOC = P17 | IOSTANDARD = LVTTL;
+NET "pinnumber<13>" LOC = P22 | IOSTANDARD = LVTTL;
+NET "pinnumber<12>" LOC = P24 | IOSTANDARD = LVTTL;
+
+NET "pinnumber<4>" LOC = P5 | IOSTANDARD = LVTTL;
+NET "pinnumber<5>" LOC = P7 | IOSTANDARD = LVTTL;
+NET "pinnumber<6>" LOC = P9 | IOSTANDARD = LVTTL;
+NET "pinnumber<7>" LOC = P11 | IOSTANDARD = LVTTL;
+NET "pinnumber<8>" LOC = P14 | IOSTANDARD = LVTTL;
+NET "pinnumber<9>" LOC = P16 | IOSTANDARD = LVTTL;
+NET "pinnumber<10>" LOC = P21 | IOSTANDARD = LVTTL;
+NET "pinnumber<11>" LOC = P23 | IOSTANDARD = LVTTL;
+
+NET "pinnumber<0>" LOC = P124 | IOSTANDARD = LVTTL;
+NET "pinnumber<1>" LOC = P127 | IOSTANDARD = LVTTL;
+NET "pinnumber<2>" LOC = P132 | IOSTANDARD = LVTTL;
+NET "pinnumber<3>" LOC = P134 | IOSTANDARD = LVTTL;
+NET "pinnumber<20>" LOC = P138 | IOSTANDARD = LVTTL;
+NET "pinnumber<21>" LOC = P144 | IOSTANDARD = LVTTL;
+NET "pinnumber<22>" LOC = P140 | IOSTANDARD = LVTTL;
+NET "pinnumber<23>" LOC = P142 | IOSTANDARD = LVTTL;
+
+NET "segpinnumberstage<0>" LOC = P57 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<1>" LOC = P66 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<2>" LOC = P74 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<3>" LOC = P78 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<4>" LOC = P80 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<5>" LOC = P82 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<6>" LOC = P84 | IOSTANDARD = LVTTL;
+NET "segpinnumberstage<7>" LOC = P87 | IOSTANDARD = LVTTL;
+
+
+NET "segpinnumberones<0>" LOC = P98 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<1>" LOC = P100 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<2>" LOC = P102 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<3>" LOC = P105 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<4>" LOC = P112 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<5>" LOC = P115 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<6>" LOC = P117 | IOSTANDARD = LVTTL;
+NET "segpinnumberones<7>" LOC = P119 | IOSTANDARD = LVTTL;
+
+NET "segpinnumbertens<0>" LOC = P94 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<1>" LOC = P97 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<2>" LOC = P99 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<3>" LOC = P101 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<4>" LOC = P104 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<5>" LOC = P111 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<6>" LOC = P114 | IOSTANDARD = LVTTL;
+NET "segpinnumbertens<7>" LOC = P116 | IOSTANDARD = LVTTL;
+
+NET "button_start" LOC = P139 | IOSTANDARD = LVTTL | PULLUP;
+NET "button_L" LOC = P137 | IOSTANDARD = LVTTL | PULLUP;
+NET "button_R" LOC = P141 | IOSTANDARD = LVTTL | PULLUP;

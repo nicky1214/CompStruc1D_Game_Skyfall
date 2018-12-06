@@ -1,0 +1,35 @@
+module display (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input red[8][8],
+    input green[8][8],
+    
+    output rows[8],
+    output out_red[8],
+    output out_green[8]
+  ) {
+    counter mycounter (.clk(clk),.rst(rst),#SIZE(3), #DIV(16), #TOP(7));
+    //DIV indicates how many cycles in cpu before it increments in this case 2^16
+    //TOP indicates max value 0-6 for 7 rows
+    //SIZE -> no of bits
+    
+  always {
+     //initiailize default outputs
+    rows = 8b00000000;
+    out_red = 8b11111111;
+    out_green = 8b11111111;
+    
+    rows[mycounter.value]=1;//selects a row based on mycounter and turns it on 
+    
+    
+    //each cycle a row is selected
+    //for every led in each row get the input and turn it on
+    
+    //~negates the values so 1 is on
+    
+    out_red = ~red[mycounter.value];
+    out_green = ~green[mycounter.value];
+    
+  }
+}

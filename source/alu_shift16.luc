@@ -1,0 +1,36 @@
+module alu_shift16 (
+    input a[16],
+    input b[4],
+    input alufn[6],
+    output shift[16]
+  ) {
+
+  always {
+
+    //initialisation
+    shift = a;
+  
+    case (alufn[2:0]) {
+    
+    b000:
+    //SHL - shift left
+      shift = a << b[3:0];
+    
+    b001:
+    //SHR - shift right
+      shift = a >> b[3:0];
+     
+    b011:
+    //SRA - shift right with sign extension
+      shift = (a >> b[3:0] | 16x{a[15]} << b10000 - b[3:0]);
+     
+    b100:
+    //RL - rotate left (shift left, replacing zeros of LSB of output with deleted MSB of input
+      shift = (a << b[3:0] | a >> b10000 - b[3:0]);
+    
+    b101:
+    //RR - rotate right (shift right, replacing zeros of MSB of output with deleted LSB of input
+      shift = (a >> b[3:0] | a << b10000 - b[3:0]);
+  }
+}
+}

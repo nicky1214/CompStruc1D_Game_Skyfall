@@ -1,0 +1,8 @@
+INTSTYLE=pa
+INFILE=C:\Users\ktw1234\Downloads\mojo (new led matrix)\mojo (new led matrix)\work\planAhead\mojo test\mojo test.runs\impl_1\mojo_top_0_routed.ncd
+OUTFILE=C:\Users\ktw1234\Downloads\mojo (new led matrix)\mojo (new led matrix)\work\planAhead\mojo test\mojo test.runs\impl_1\mojo_top_0.bit
+FAMILY=Spartan6
+PART=xc6slx9-2tqg144
+WORKINGDIR=C:\Users\ktw1234\Downloads\mojo (new led matrix)\mojo (new led matrix)\work\planAhead\mojo test\mojo test.runs\impl_1
+LICENSE=WebPack
+USER_INFO=211604235_0_0_839

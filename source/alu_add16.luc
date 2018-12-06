@@ -1,0 +1,36 @@
+module alu_add16 (
+    input a[16],
+    input b[16],
+    input alufn[6],
+    output sum[16],
+    output z,
+    output v,
+    output n
+  ) {
+  
+  sig xb[16];
+  sig sum1[16];
+
+  always {
+    z = 0;
+    v = 0;
+    n = 0;
+    sum = a;
+  
+    if (alufn[1:0] == b10) {
+    
+      sum = a * b;
+          
+      } else {
+    
+      xb = b^16x{alufn[0]};
+      sum1 = a + xb + alufn[0];
+      sum = sum1;
+      
+      z = (sum1 == 16x{0});
+      v = (a[15] & xb[15] & !sum1[15]) || (!a[15] & !xb[15] & sum1[15]);
+      n = sum1[15];
+      
+      }   
+  }
+}

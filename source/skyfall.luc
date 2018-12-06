@@ -1,0 +1,456 @@
+module skyfall (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input button_L, // input from user
+    input button_R, // input from user
+    input button_start, // input from user, start or reset button depends on state
+    
+    output ledmatrix[64], // output to led matrix [row][column]
+    output score[7],  // 7-bit binary representation of number to display on 2-digit seven seg display
+    output stages[3] // 3-bit representation of game stages 0-4 to display on 1-digit seven seg display
+    
+  ) {
+  
+  ///////////////////////// ALU functions implemented: ADD, MUL, SHR, RT (L and R), XOR ///////////////////////////////////////////
+  
+  alu alu;   // for checking correctness (XOR), moving left and right (RTL, RTR)
+  alu alu0;  // alu0-alu7 for shift right of column registers (SHR)
+  alu alu1;
+  alu alu2;
+  alu alu3;
+  alu alu4;
+  alu alu5;
+  alu alu6;
+  alu alu7;
+  alu alu8;  // to shift right to generate template by recycling rows (SHR)
+  alu aluscore; // to add the score each time the sky falls (ADD)
+  alu aluscore2; //  to multiply score increment for stage 2 onwards.(MUL)
+  sig temp;
+  
+  .clk(clk){
+    edge_detector edge_detector(#RISE(1), #FALL(0));// generates a pulse for each period
+    
+  .rst(rst){
+    register clock(#WIDTH(30)); // customised counter "clock" starts only in playing mode
+    dff period; // period always coupled to a particular bit of clock
+    //dff period2;
+    //dff period3;
+    //dff period4;
+    register scorecounter(#WIDTH(7)); // scorecounter couples to different periods according to its value
+    //dff correctness[8];
+    //dff result;
+    register template(#WIDTH(8));
+    register firstrow(#WIDTH(8));
+    register playerrow(#WIDTH(8));
+    register lastrow(#WIDTH(8));
+    register middlecolumns0(#WIDTH(5)); //column(76543210)[row(4321)] 8 registers of 5 bits each
+    register middlecolumns1(#WIDTH(5));
+    register middlecolumns2(#WIDTH(5));
+    register middlecolumns3(#WIDTH(5));
+    register middlecolumns4(#WIDTH(5));
+    register middlecolumns5(#WIDTH(5));
+    register middlecolumns6(#WIDTH(5));
+    register middlecolumns7(#WIDTH(5));
+    register stage(#WIDTH(3));
+    fsm gamestate = {START,DEFAULT,PLAYING,GAMEOVER};
+    }
+  }
+  
+  
+
+  always {
+    
+    
+    //////////////////////////////// MAPPING REGISTERS TO OUTPUT /////////////////////////////////
+    //mapping score to be displayed on seven seg subsequently
+    score = scorecounter.q;
+    stages = stage.q;    
+    //mapping rows and colums registers to their corresponding LED index
+    ledmatrix = 64b0;
+    ledmatrix[63:56] = firstrow.q;
+    ledmatrix[15:8] = lastrow.q;
+    ledmatrix[7:0] = playerrow.q;    
+    ledmatrix[55:48] = c{middlecolumns7.q[4],middlecolumns6.q[4],middlecolumns5.q[4],middlecolumns4.q[4],middlecolumns3.q[4],middlecolumns2.q[4],middlecolumns1.q[4],middlecolumns0.q[4]};
+    ledmatrix[47:40] = c{middlecolumns7.q[3],middlecolumns6.q[3],middlecolumns5.q[3],middlecolumns4.q[3],middlecolumns3.q[3],middlecolumns2.q[3],middlecolumns1.q[3],middlecolumns0.q[3]};
+    ledmatrix[39:32] = c{middlecolumns7.q[2],middlecolumns6.q[2],middlecolumns5.q[2],middlecolumns4.q[2],middlecolumns3.q[2],middlecolumns2.q[2],middlecolumns1.q[2],middlecolumns0.q[2]};
+    ledmatrix[31:24] = c{middlecolumns7.q[1],middlecolumns6.q[1],middlecolumns5.q[1],middlecolumns4.q[1],middlecolumns3.q[1],middlecolumns2.q[1],middlecolumns1.q[1],middlecolumns0.q[1]};
+    ledmatrix[23:16] = c{middlecolumns7.q[0],middlecolumns6.q[0],middlecolumns5.q[0],middlecolumns4.q[0],middlecolumns3.q[0],middlecolumns2.q[0],middlecolumns1.q[0],middlecolumns0.q[0]};
+    
+    // 8X8 led matrix display mapping to registers:
+    
+    //               firstrow                  //
+    // middlecolumns 7 6 5 4 3 2 1 0  index: 4 //
+    //                                       3 //
+    //                                       2 //
+    //                                       1 //    
+    //                                       0 //
+    //               lastrow                   //  
+    //              playerrow                  //
+    
+    //////////////////////////////////// INITIALISING REGISTERS /////////////////////////////////
+    //connecting internal circuitry to default state, turn off write-enable
+    
+    template.d = h0;
+    firstrow.d = h0; 
+    middlecolumns0.d = h0;
+    middlecolumns1.d = h0;
+    middlecolumns2.d = h0;
+    middlecolumns3.d = h0;
+    middlecolumns4.d = h0;
+    middlecolumns5.d = h0;
+    middlecolumns6.d = h0;
+    middlecolumns7.d = h0;
+    lastrow.d = h0;
+    playerrow.d = h00; 
+    
+    clock.en = 0;
+    scorecounter.en = 1;
+    template.en = 0;
+    firstrow.en = 0; 
+    middlecolumns0.en = 0;
+    middlecolumns1.en = 0;
+    middlecolumns2.en = 0;
+    middlecolumns3.en = 0;
+    middlecolumns4.en = 0;
+    middlecolumns5.en = 0;
+    middlecolumns6.en = 0;
+    middlecolumns7.en = 0;
+    lastrow.en = 0;
+    playerrow.en = 0;
+    stage.en = 0;
+    
+    // initialise alu
+    alu.a  = 0;
+    alu0.a = 0;
+    alu1.a = 0;
+    alu2.a = 0;
+    alu3.a = 0;
+    alu4.a = 0;
+    alu5.a = 0;
+    alu6.a = 0;
+    alu7.a = 0;
+    alu8.a = 0;
+    aluscore2.a = 0;
+    
+    alu.b  = 0;
+    alu0.b = 0;
+    alu1.b = 0;
+    alu2.b = 0;
+    alu3.b = 0;
+    alu4.b = 0;
+    alu5.b = 0;
+    alu6.b = 0;
+    alu7.b = 0;
+    alu8.b = 0;
+    aluscore2.b = 0;
+    
+    alu.alufn  = 0;
+    alu0.alufn = 0;   
+    alu1.alufn = 0;  
+    alu2.alufn = 0;  
+    alu3.alufn = 0; 
+    alu4.alufn = 0;  
+    alu5.alufn = 0;  
+    alu6.alufn = 0;  
+    alu7.alufn = 0;  
+    alu8.alufn = 0;
+    aluscore2.alufn = 0;
+    
+    // we made our customised "clock":
+    clock.d = 0;    
+    
+    period.d = clock.q[27];//initialise period ~ 3sec 
+    edge_detector.in = ~period.q; // edge_detector gives a pulse of 1 once every period; we invert period so it starts on 0.      
+    //score increases once every period (of clock that starts during game) 
+    aluscore.a = edge_detector.out;
+    aluscore.b = scorecounter.q;
+    aluscore.alufn = b000000;                             // ALU FUNCTION: ADD
+    scorecounter.d = aluscore.alu[4:0];  
+    stage.d = 0;  
+
+    case(gamestate.q){
+      
+      gamestate.START:
+
+        //display "S"
+        
+        firstrow.en = 1; 
+        middlecolumns0.en = 1;
+        middlecolumns1.en = 1;
+        middlecolumns2.en = 1;
+        middlecolumns3.en = 1;
+        middlecolumns4.en = 1;
+        middlecolumns5.en = 1;
+        middlecolumns6.en = 1;
+        middlecolumns7.en = 1;
+        lastrow.en = 1;
+        playerrow.en = 1;
+        stage.en = 1;
+        
+        scorecounter.d = 0; // resets score counter for new player; scorecounter.en is always 1 unless specified (ie for when gameover and we want to retain score value)
+        firstrow.d = h0; 
+        middlecolumns0.d = h0;
+        middlecolumns1.d = h0;
+        middlecolumns2.d = b10111;
+        middlecolumns3.d = b10101;
+        middlecolumns4.d = b10101;
+        middlecolumns5.d = b11101;
+        middlecolumns6.d = h0;
+        middlecolumns7.d = h0;
+        lastrow.d = h0;
+        playerrow.d = h00;
+        stage.d = 0; // resets stage for new player
+        if(button_start){
+            gamestate.d = gamestate.DEFAULT;      
+          }        
+      
+      gamestate.DEFAULT:
+        scorecounter.d = 0; 
+        
+        // to set the default gameplay screen:
+        template.en = 1;
+        firstrow.en = 1; 
+        middlecolumns0.en = 1;
+        middlecolumns1.en = 1;
+        middlecolumns2.en = 1;
+        middlecolumns3.en = 1;
+        middlecolumns4.en = 1;
+        middlecolumns5.en = 1;
+        middlecolumns6.en = 1;
+        middlecolumns7.en = 1;
+        lastrow.en = 1;
+        playerrow.en = 1;
+        stage.en = 1;
+        
+        //DEFAULT GAMEPLAY SCREEN
+              
+        template.d = hf7;
+        firstrow.d = b11111110;
+        middlecolumns0.d = b11111;
+        middlecolumns1.d = b10111;
+        middlecolumns2.d = b11111;
+        middlecolumns3.d = b11011;
+        middlecolumns4.d = b11101;
+        middlecolumns5.d = b01111;
+        middlecolumns6.d = b11110;
+        middlecolumns7.d = b11111;
+        lastrow.d = b11110111;
+        playerrow.d = b00001000;
+        stage.d = 1;
+        
+        gamestate.d = gamestate.PLAYING;
+        
+      gamestate.PLAYING:
+        clock.en = 1; // clock.en is always 0 unless specified
+        clock.d = clock.q + 1; //clock starts running  
+        
+        template.en =0;
+        firstrow.en = 0; 
+        middlecolumns0.en = 0;
+        middlecolumns1.en = 0;
+        middlecolumns2.en = 0;
+        middlecolumns3.en = 0;
+        middlecolumns4.en = 0;
+        middlecolumns5.en = 0;
+        middlecolumns6.en = 0;
+        middlecolumns7.en = 0;
+        lastrow.en = 0;
+        playerrow.en = 0;
+             
+        if(scorecounter.q >=5 && scorecounter.q<15){
+            period.d = clock.q[26]; // game speed X2
+            stage.en = 1;
+            stage.d = 2;
+          
+            //scorecounter.d = scorecounter.q + 2*(edge_detector.out);// score increments by 2
+            //increments of 2
+            aluscore2.a = edge_detector.out;
+            aluscore2.b = h2;
+            aluscore2.alufn = b000010;                   // ALU FUNCTION: MUL
+            // 2* increment added to scorecounter:
+            aluscore.a = aluscore2.alu;
+            aluscore.b = scorecounter.q;
+            aluscore.alufn = b000000;                    // ALU FUNCTION: ADD
+            scorecounter.d = aluscore.alu[6:0];
+          
+          }
+        if(scorecounter.q>=15 && scorecounter.q <30){
+            period.d = clock.q[25]; // game speed X4
+            stage.en = 1;
+            stage.d = 3;
+            
+            //scorecounter.d = scorecounter.q + 3*(edge_detector.out);// score increments by 4
+            //increments of 3
+            aluscore2.a = edge_detector.out;
+            aluscore2.b = h3;
+            aluscore2.alufn = b000010;                   // ALU FUNCTION: MUL
+            // 2* increment added to scorecounter:
+            aluscore.a = aluscore2.alu;
+            aluscore.b = scorecounter.q;
+            aluscore.alufn = b000000;                    // ALU FUNCTION: ADD
+            scorecounter.d = aluscore.alu[6:0];
+          
+          }
+        if(scorecounter.q >= 30){
+            period.d = clock.q[25]; // gamespeed X4
+            stage.en = 1;
+            stage.d = 4;
+          
+            //scorecounter.d = scorecounter.q + 4*(edge_detector.out);// score increments by 8
+            //increments of 4
+            aluscore2.a = edge_detector.out;
+            aluscore2.b = h4;
+            aluscore2.alufn = b000010;                   // ALU FUNCTION: MUL
+            // 2* increment added to scorecounter:
+            aluscore.a = aluscore2.alu;
+            aluscore.b = scorecounter.q;
+            alu.alufn = b000000;                         // ALU FUNCTION: ADD
+            scorecounter.d = aluscore.alu[6:0];
+          
+          }
+        if(button_start){
+            gamestate.d = gamestate.START; // reset button pressed
+          }
+        if(button_L){ // left button pressed
+            playerrow.en = 1;
+            alu.a = playerrow.q;
+            alu.b = b001;
+            alu.alufn = 6b100100;                        // ALU FUNCTION: RTL
+            playerrow.d = alu.alu[7:0];
+            playerrow.d[0] = alu.alu[8];
+          }
+        if(button_R){ // right button pressed
+            playerrow.en = 1;
+            alu.a = playerrow.q;
+            alu.b = b001;
+            alu.alufn = 6b100101;                        // ALU FUNCTION: RTR
+            playerrow.d = alu.alu[7:0];
+            playerrow.d[7] = alu.alu[15];
+          }
+        if(edge_detector.out){ // after each period  : CHeck correctness              
+            alu.a = playerrow.q;
+            alu.b = lastrow.q;
+            alu.alufn = 6b010110;                        // ALU FUNCTION: XOR
+            
+            temp = &{alu.alu[7:0]}; // make sure all bits matches
+            if(~temp){
+              scorecounter.en = 0; // lock in the last score to be displayed even after game is over.
+              gamestate.d = gamestate.GAMEOVER;
+            }
+            else{
+              template.en = 1;
+              firstrow.en = 1; 
+              middlecolumns0.en = 1;
+              middlecolumns1.en = 1;
+              middlecolumns2.en = 1;
+              middlecolumns3.en = 1;
+              middlecolumns4.en = 1;
+              middlecolumns5.en = 1;
+              middlecolumns6.en = 1;
+              middlecolumns7.en = 1;
+              lastrow.en = 1;
+
+              //SKYFALLS 
+              lastrow.d = c{middlecolumns7.q[0],middlecolumns6.q[0],middlecolumns5.q[0],middlecolumns4.q[0],middlecolumns3.q[0],middlecolumns2.q[0],middlecolumns1.q[0],middlecolumns0.q[0]};
+
+              //shift right the column registers, first value takes first row
+              alu7.a = middlecolumns7.q;
+              alu7.b = 1;
+              alu7.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns7.d = alu7.alu[4:0];
+              middlecolumns7.d[4] = firstrow.q[7];
+              
+              alu6.a = middlecolumns6.q;
+              alu6.b = 1;
+              alu6.alufn = 6b100001;                     // ALU FUNCTION: SHR 
+              middlecolumns6.d = alu6.alu[4:0];
+              middlecolumns6.d[4] = firstrow.q[6];
+              
+              alu5.a = middlecolumns5.q;
+              alu5.b = 1;
+              alu5.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns5.d = alu5.alu[4:0];
+              middlecolumns5.d[4] = firstrow.q[5];
+              
+              alu4.a = middlecolumns4.q;
+              alu4.b = 1;
+              alu4.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns4.d = alu4.alu[4:0];
+              middlecolumns4.d[4] = firstrow.q[4];
+              
+              alu3.a = middlecolumns3.q;
+              alu3.b = 1;
+              alu3.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns3.d = alu3.alu[4:0];
+              middlecolumns3.d[4] = firstrow.q[3];
+               
+              alu2.a = middlecolumns2.q;
+              alu2.b = 1;
+              alu2.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns2.d = alu2.alu[4:0];
+              middlecolumns2.d[4] = firstrow.q[2];
+              
+              alu1.a = middlecolumns1.q;
+              alu1.b = 1;
+              alu1.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns1.d = alu1.alu[4:0];
+              middlecolumns1.d[4] = firstrow.q[1];
+              
+              alu0.a = middlecolumns0.q;
+              alu0.b = 1;
+              alu0.alufn = 6b100001;                     // ALU FUNCTION: SHR
+              middlecolumns0.d = alu0.alu[4:0];
+              middlecolumns0.d[4] = firstrow.q[0];
+              
+              //randomise template     
+              alu8.a = lastrow.q;
+              alu8.b = h03;
+              alu8.alufn = 6b100101;                     // ALU FUNCTION: SHR
+              template.d = alu8.alu[7:0];
+              template.d[7:5] = alu8.alu[15:13];
+
+            
+              firstrow.d = template.q; // new entry to first row
+              gamestate.d = gamestate.PLAYING;
+          }
+          
+        }
+        
+      gamestate.GAMEOVER:
+        clock.en = 1; // clock.en is always 0 unless specified
+        clock.d = 0; // stop customised clock, start screen subsequently retains clock value of 0 when clock.en becomes 0
+        scorecounter.en = 0; // player's score retains on the score display 
+        
+        // display X on led matrix
+        firstrow.en = 1; 
+        middlecolumns0.en = 1;
+        middlecolumns1.en = 1;
+        middlecolumns2.en = 1;
+        middlecolumns3.en = 1;
+        middlecolumns4.en = 1;
+        middlecolumns5.en = 1;
+        middlecolumns6.en = 1;
+        middlecolumns7.en = 1;
+        lastrow.en = 1;
+        playerrow.en = 1;
+
+        firstrow.d = b01000010;
+        middlecolumns1.d = b00001;
+        middlecolumns2.d = b10010;
+        middlecolumns3.d = b01100;
+        middlecolumns4.d = b01100;
+        middlecolumns5.d = b10010;
+        middlecolumns6.d = b00001;
+        middlecolumns7.d = b00000;
+        lastrow.d = b00000000;
+        playerrow.d = b000000000;
+        
+        if (button_start){
+            gamestate.d = gamestate.START; // start button pressed -> goes to start screen
+          }
+        
+      }
+        
+  }
+}

@@ -1,0 +1,128 @@
+module sevenseg (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input score[7],
+    input stage[3],
+    
+    output pinnumber1[8], // smaller digit for score
+    output pinnumber2[8], // larger digit for score
+    output pinnumber3[8]  // digit for stage
+  ) {
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    
+    .rst(rst){
+    dff tens[4];
+    dff ones[4];
+    }
+  }
+
+  always { 
+
+    // mapping score and stage to pinnumber on respective seven segment displays
+    case(stage){
+      b000: pinnumber3 = 8b11000000;  //stage 0      
+      b001: pinnumber3 = 8b11111001;  //stage 1
+      b010: pinnumber3 = 8b10100100;  //stage 2
+      b011: pinnumber3 = 8b10110000;  //stage 3
+      b100: pinnumber3 = 8b10011001;  //stage 4
+      default: pinnumber3 = 8b11000000;//stage 0
+    }
+    case(ones.q){
+      0: pinnumber1 = 8b11000000;
+      1: pinnumber1 = 8b11111001;
+      2: pinnumber1 = 8b10100100;
+      3: pinnumber1 = 8b10110000;
+      4: pinnumber1 = 8b10011001;
+      5: pinnumber1 = 8b10010010;
+      6: pinnumber1 = 8b10000010;
+      7: pinnumber1 = 8b11111000;
+      8: pinnumber1 = 8b11111111;
+      9: pinnumber1 = 8b10010000;
+      default: pinnumber1 = 8b11000000; // display 0
+        }
+    case(tens.q){
+      0: pinnumber2 = 8b11000000;
+      1: pinnumber2 = 8b11111001;
+      2: pinnumber2 = 8b10100100;
+      3: pinnumber2 = 8b10110000;
+      4: pinnumber2 = 8b10011001;
+      5: pinnumber2 = 8b10010010;
+      6: pinnumber2 = 8b10000010;
+      7: pinnumber2 = 8b11111000;
+      8: pinnumber2 = 8b11111111;
+      9: pinnumber2 = 8b10010000; 
+      default: pinnumber2 = 8b11000000; // display 0
+        }        
+        
+        // convert binary (score) to decimal: tens and ones
+        
+    if(score == 0 || score == 10 ||  score == 20 ||  score == 30 ||  score == 40 ||  score == 50 ||  score == 60 ||  score == 70 ||  score == 80 ||  score == 90 ){
+        ones.d = 0;
+        }
+    if(score == 1 || score == 11 ||  score == 21 ||  score == 31 ||  score == 41 ||  score == 51 ||  score == 61 ||  score == 71 ||  score == 81 ||  score == 91 ){
+        ones.d = 1;
+        }  
+    if(score == 2 || score == 12 ||  score == 22 ||  score == 32 ||  score == 42 ||  score == 52 ||  score == 62 ||  score == 72 ||  score == 82 ||  score == 92 ){
+        ones.d = 2;
+        }
+    if(score == 3 || score == 13 ||  score == 23 ||  score == 33 ||  score == 43 ||  score == 53 ||  score == 63 ||  score == 73 ||  score == 83 ||  score == 93 ){
+        ones.d = 3;
+        }  
+    if(score == 4 || score == 14 ||  score == 24 ||  score == 34 ||  score == 44 ||  score == 54 ||  score == 64 ||  score == 74 ||  score == 84 ||  score == 94 ){
+        ones.d = 4;
+        }
+    if(score == 5 || score == 15 ||  score == 25 ||  score == 35 ||  score == 45 ||  score == 55 ||  score == 65 ||  score == 75 ||  score == 85 ||  score == 95 ){
+        ones.d = 5;
+        }  
+    if(score == 6 || score == 16 ||  score == 26 ||  score == 36 ||  score == 46 ||  score == 56 ||  score == 66 ||  score == 76 ||  score == 86 ||  score == 96 ){
+        ones.d = 6;
+        }
+    if(score == 7 || score == 17 ||  score == 27 ||  score == 37 ||  score == 47 ||  score == 57 ||  score == 67 ||  score == 77 ||  score == 87 ||  score == 97 ){
+        ones.d = 7;
+        }
+    if(score == 8 || score == 18 ||  score == 28 ||  score == 38 ||  score == 48 ||  score == 58 ||  score == 68 ||  score == 78 ||  score == 88 ||  score == 98 ){
+        ones.d = 8;
+        }
+    if(score == 9 || score == 19 ||  score == 29 ||  score == 39 ||  score == 49 ||  score == 59 ||  score == 69 ||  score == 79 ||  score == 89 ||  score == 99 ){
+        ones.d = 9;
+        }
+        
+    if(score<10){
+        tens.d = 0;
+        }
+    else if(score<20){
+        tens.d = 1;
+        }
+    else if(score<30){
+        tens.d = 2;
+        }
+    else if(score<40){
+        tens.d = 3;
+        }   
+    else if(score<50){
+        tens.d = 4;
+        }
+    else if(score<60){
+        tens.d = 5;
+        }
+    else if(score<70){
+        tens.d = 6;
+        } 
+    else if(score<80){
+        tens.d = 7;
+        }
+    else if(score<90){
+        tens.d = 8;
+        }
+    else if(score<100){
+        tens.d = 9;
+        }    
+     
+    }
+  }
+
+

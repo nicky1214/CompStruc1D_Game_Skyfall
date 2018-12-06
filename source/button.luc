@@ -1,0 +1,44 @@
+module button (
+    input clk,  // clock
+    input rst,  // reset
+    input leftbutton,
+    input rightbutton,
+    input resetbutton,
+        
+    output leftbutton_new,
+    output rightbutton_new,
+    output resetbutton_new
+  ) {
+   .clk(clk){
+  
+    edge_detector edgeleft(#RISE(1), #FALL(0)); // detect rising edges     
+    button_conditioner leftbutton_cond;     // button input conditioner
+    
+    edge_detector edgeright(#RISE(1), #FALL(0)); // detect rising edges     
+    button_conditioner rightbutton_cond;     // button input reset_conditioner
+    
+    edge_detector edgereset(#RISE(1), #FALL(0)); // detect rising edges     
+    button_conditioner resetbutton_cond;     // button input conditioner
+    }
+  
+  
+  always {
+    leftbutton_cond.in = leftbutton;            // raw button input
+    edgeleft.in = ~leftbutton_cond.out; // input to the edge_detector   
+    if (edgeleft.out){              // if edge detected
+     leftbutton_new =1  ; }           // add one to the counter}
+    else{leftbutton_new=0;}
+    
+    rightbutton_cond.in = rightbutton;            // raw button input
+    edgeright.in = ~rightbutton_cond.out; // input to the edge_detector   
+    if (edgeright.out){              // if edge detected
+     rightbutton_new =1  ; }           // add one to the counter}
+    else{rightbutton_new=0;}
+    
+    resetbutton_cond.in = resetbutton;            // raw button input
+    edgereset.in = ~resetbutton_cond.out; // input to the edge_detector   
+    if (edgereset.out){              // if edge detected
+     resetbutton_new =1  ; }           // add one to the counter}
+    else{resetbutton_new=0;}
+  }
+}

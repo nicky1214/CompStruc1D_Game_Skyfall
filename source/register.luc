@@ -1,0 +1,22 @@
+module register #(
+    WIDTH=8
+  )(
+    input clk,
+    input en,  // enable
+    input rst,  // reset
+    input d[WIDTH],
+    output q[WIDTH]
+  ) {
+  
+  dff regs[WIDTH](.clk(clk),.rst(rst));
+ 
+  always {
+  
+    if(en==1)
+      regs.d=d;
+    else  
+      regs.d=regs.q;
+    //regs.d=data;
+    q=regs.q;
+  }
+}
